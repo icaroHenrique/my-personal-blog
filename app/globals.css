@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-archivo-black), sans-serif;
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-code: var(--font-jetbrains-mono), monospace;
+
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-stroke: var(--stroke-color);
+  --color-shadow: var(--shadow-color);
+  --color-grid: var(--grid-color);
+
+  --color-accent-yellow: #FFD23F;
+  --color-accent-pink: #FF6B6B;
+  --color-accent-blue: #74B9FF;
+  --color-accent-green: #88D498;
+  --color-accent-orange: #FFA552;
+  --color-accent-purple: #B8A9FA;
+
+  --shadow-neo-sm: 3px 3px 0 0 var(--shadow-color);
+  --shadow-neo-md: 5px 5px 0 0 var(--shadow-color);
+  --shadow-neo-lg: 8px 8px 0 0 var(--shadow-color);
+  --shadow-neo-xl: 12px 12px 0 0 var(--shadow-color);
+}
+
+:root {
+  --bg-base: #FFFDF5;
+  --bg-surface: #FFFFFF;
+  --stroke-color: #000000;
+  --shadow-color: #000000;
+  --grid-color: rgba(0, 0, 0, 0.06);
+
+  --text-main: #000000;
+  --text-muted: #4a4a4a;
+  --code-header-bg: #242424;
+  --code-header-text: #FFFFFF;
+  --code-btn-bg: #FFFFFF;
+  --code-btn-text: #000000;
+}
+
+[data-theme="dark"] {
+  --bg-base: #242424;
+  --bg-surface: #2d2d2d;
+  --stroke-color: #050505;
+  --shadow-color: #000000;
+  --grid-color: rgba(255, 255, 255, 0.04);
+
+  --text-main: #FFFDF5;
+  --text-muted: #a0a0a0;
+  --code-header-bg: #FFFFFF;
+  --code-header-text: #000000;
+  --code-btn-bg: #000000;
+  --code-btn-text: #FFFFFF;
+}
+
+/* Reset base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-body), sans-serif;
+  min-height: 100vh;
+
+  /* Background Grid Pattern */
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Tipografia Base */
+.font-display {
+  font-family: var(--font-archivo-black), sans-serif;
+  font-weight: 400;
+}
+
+.font-heading {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+}
+
+.font-body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-code {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+/* Componentes Neubrutalistas */
+@layer components {
+  .neo-border-thin {
+    border: 2px solid var(--stroke-color);
+  }
+
+  .neo-border {
+    border: 3px solid var(--stroke-color);
+  }
+
+  .neo-border-thick {
+    border: 4px solid var(--stroke-color);
+  }
+
+  .neo-shadow-sm {
+    box-shadow: 3px 3px 0 0 var(--shadow-color);
+  }
+
+  .neo-shadow-md,
+  .neo-shadow {
+    box-shadow: 5px 5px 0 0 var(--shadow-color);
+  }
+
+  .neo-shadow-lg {
+    box-shadow: 8px 8px 0 0 var(--shadow-color);
+  }
+
+  .neo-shadow-xl {
+    box-shadow: 12px 12px 0 0 var(--shadow-color);
+  }
+
+  /* Card */
+  .neo-card {
+    border: 3px solid var(--stroke-color);
+    box-shadow: 5px 5px 0 0 var(--shadow-color);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border-radius: 0;
+    transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+  }
+
+  .neo-card-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 0 var(--shadow-color);
+  }
+
+  /* Botão */
+  .neo-btn {
+    border: 3px solid var(--stroke-color);
+    box-shadow: 5px 5px 0 0 var(--shadow-color);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border-radius: 0;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    transition: transform 100ms ease-out, box-shadow 100ms ease-out;
+    user-select: none;
+  }
+
+  .neo-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--shadow-color);
+  }
+
+  .neo-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px 0 0 var(--shadow-color);
+  }
+
+  /* Input */
+  .neo-input {
+    border: 3px solid var(--stroke-color);
+    box-shadow: 3px 3px 0 0 var(--shadow-color);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border-radius: 0;
+    padding: 0.625rem 1rem;
+    outline: none;
+    transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+  }
+
+  .neo-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.85;
+  }
+
+  .neo-input:focus-visible {
+    border-color: #FFD23F;
+    box-shadow: 5px 5px 0 0 var(--stroke-color);
+  }
+
+  /* Badge */
+  .neo-badge {
+    border: 2px solid var(--stroke-color);
+    box-shadow: 2px 2px 0 0 var(--shadow-color);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Redução de animações para preferência de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+
+  .neo-card,
+  .neo-btn,
+  .neo-input {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Ocultar barra de rolagem mantendo a funcionalidade de scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
