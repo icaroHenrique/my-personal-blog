@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hard Shadow -->
+  <rect x="12" y="12" width="44" height="44" fill="#000" />
+  <!-- Box -->
+  <rect x="4" y="4" width="44" height="44" fill="#FFD23F" stroke="#000" stroke-width="4" />
+  <!-- Text Í -->
+  <text x="26" y="26" font-family="system-ui, sans-serif" font-weight="900" font-size="32" fill="#000" text-anchor="middle" dominant-baseline="central">I</text>
+</svg>
